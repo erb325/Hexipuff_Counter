@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Hexi-puff Counter</title>
+
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript">
+
+        var marked;
+        var row=0;
+        var ctx;
+        var c;
+        var i=0;
+        var y;
+
+        window.onload=function(){
+
+            marked = new Array();
+
+
+
+            marked[i] = false;
+
+
+        }
+
+        function canvasClicked(canvasNumber) {
+            var theCanvas = "canvas"+canvasNumber;
+            c=document.getElementById(theCanvas);
+            ctx= c.getContext("2d");
+
+
+            if( marked[canvasNumber-1]==false && row <40){
+                if(row%2==0){
+                    row++;
+                    //ctx.beginPath();
+                    ctx.fillStyle="#CC99FF";
+                    ctx.fillRect(0,0,400,200);
+                    ctx.fillStyle= "#660099"
+                    ctx.font="30px Arial";
+                    ctx.fillText("Knit row. ROW#: "+row ,10,50);
+                    //ctx.closePath();
+
+                } else if (row <= 20) {
+                    row++;
+                   // ctx.beginPath();
+                    ctx.fillStyle="#CC99FF";
+                    ctx.fillRect(0,0,400,200);
+                    ctx.fillStyle= "#660099"
+                    ctx.font="30px Arial";
+                    ctx.fillText("INC row. ROW#:  "+row,10,50);
+                    //ctx.closePath();
+
+                }
+                else{
+                    row++;
+                    ctx.fillStyle="#CC99FF";
+                    ctx.fillRect(0,0,400,200);
+                    ctx.fillStyle= "#660099"
+                    ctx.font="30px Arial";
+                    ctx.fillText("DEC row. ROW#:  "+row,10,50);
+
+                }
+            }
+            if (row ==40){
+                again();
+            }
+        }
+
+
+
+        function again(){
+            y=confirm("Would you like to make another?");
+            if(y==true){
+                alert("YAY!");
+                location.reload(true);
+            }
+            else{
+                alert("Sad panda. Come back soon");
+            }
+
+        }
+
+    </script>
+
+
+</head>
+<body>
+     <div>
+         <h1>Hexi-puff Counter</h1>
+     <h2 >To use the Hexi-puff Counter start by
+         <a href="http://www.youtube.com/watch?v=ITM9Zodn-Uk">casting on 20 stitches using the Tubular Cast-on</a> </h2>
+      <h2> Then knit to the beginning, once done click the button to count your rows</h2>
+         <h2> To get pattern <a href= " ">Click Here</a></h2>
+         <h2> Get more information about Tiny Owl Knits <a href= " ">Click Here</a> </h2>
+
+
+
+    <h2> INC means increase row</h2>
+    <h2> DEC means decrease row</h2>
+    <h2> After row 40, bind off with the <a href="http://www.youtube.com/watch?v=I7jIzwO5Nv4">Kitchener Stitch</a></h2>
+    </br/>
+    <canvas id="canvas1" style="border:5px solid purple"  onclick="canvasClicked(1)"> </canvas>
+     </div>
+
+</body>
+
+</html>
